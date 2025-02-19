@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PICOIN.io</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #FFCB00;
+            color: #111111;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        h1, h2, h3 {
+            margin: 0 0 20px;
+            font-weight: bold;
+        }
+
+        /* Header */
+        header {
+            background-color: #FFCB00;
+            padding: 20px 0;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid #111111;
+        }
+
+        header img {
+            height: 40px;
+            margin-right: 20px;
+        }
+
+        header h1 {
+            font-size: 3em;
+        }
+
+        /* Navigation */
+        .nav {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .nav a {
+            margin: 0 15px;
+            font-size: 1.5em;
+            color: #111111;
+            text-decoration: none;
+            padding: 8px 18px;
+            border-radius: 5px;
+        }
+
+        .nav a:hover {
+            background-color: #FFB800;
+            color: white;
+        }
+
+        /* Main content section */
+        #content {
+            padding: 30px 20px;
+            background-color: #e6b800;
+            border-radius: 15px;
+            margin-top: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .sub-section {
+            background-color: #d69e00;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .sub-section h3 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .sub-section p {
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+
+        .button {
+            padding: 12px 24px;
+            background-color: #111111;
+            color: #FFCB00;
+            border-radius: 30px;
+            font-size: 1.2em;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            transform: scale(1.1);
+            background-color: #ff8a00;
+            color: white;
+        }
+
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background-color: #d69e00;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .step-text {
+            flex: 1;
+        }
+
+        .step-text h4 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .step-text p {
+            font-size: 1.2em;
+        }
+
+        footer {
+            background-color: #FFCB00;
+            color: #111111;
+            padding: 30px 20px;
+            text-align: center;
+            margin-top: 40px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        footer a {
+            color: #111111;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            color: #FFB800;
+        }
+
+        .video-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        video {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-container {
+            width: 100%;
+            background-color: #ddd;
+            border-radius: 20px;
+            margin: 20px 0;
+        }
+
+        .progress-bar {
+            height: 30px;
+            width: 0%;
+            background-color: #FFCB00;
+            border-radius: 20px;
+        }
+    /* Center container and align content */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Center buttons using flexbox */
+.button {
+    padding: 12px 24px;
+    background-color: #111111;
+    color: #FFCB00;
+    border-radius: 30px;
+    font-size: 1.2em;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Center headings */
+h1, h2, h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Ensure sections and content are centered */
+.sub-section, .steps, .about-container {
+    text-align: center;
+}
+
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Header with logo and title -->
+        <header>
+            <img src="images/logo.png" alt="PICOIN Logo">
+            <div class="nav">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#how-to-buy">How to Buy</a>
+                <a href="#Contract Address">Contract Address</a>
+                <a href="#Community">Community</a>
+            </div>
+        </header>
+
+        <!-- Video Container -->
+        <div class="video-container">
+            <video autoplay loop muted>
+                <source src="videos/pi.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <!-- Content Section -->
+        <div id="content">
+            <div class="sub-section" id="about">
+                <h3>$PIcoin - The Next Meme Coin</h3>
+                <p>While others are still trying to keep up, $PIcoin is taking off like the next viral sensation. This isn’t just another meme coin—it’s a full-blown movement. From crypto veterans to the new wave of meme warriors, $PIcoin is spreading like wildfire.</p>
+                <p>By the time the internet asks, “Why is $PIcoin everywhere?” you’ll already be ahead of the game. So, buckle up—traditional finance can keep crunching numbers, we’re launching straight to the moon. </p>
+                <img src="images/archimedes.png" alt="PIcoin Logo">
+
+            </div>
+
+            <div class="sub-section" id="how-to-buy">
+                <h3>How to Buy</h3>
+                <p>Follow these steps to purchase PICOIN:</p>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-text">
+                            <h4>1. Create a Wallet</h4>
+                            <p>Download Metamask or your preferred wallet app from the App Store or Google Play Store. For desktop users, simply visit metamask.io to install the Google Chrome extension and easily connect your wallet.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-text">
+                            <h4>2. Get Some BNB</h4>
+                            <p>Ensure your wallet has BNB. You can purchase BNB through Metamask or any other wallet, or buy it on other exchanges and transfer it to your wallet. Once you have BNB, you can easily exchange it for $PICOIN.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-text">
+                            <h4>3. Go to PancakeSwap</h4>
+                            <p>Visit PancakeSwap at pancakeswap.finance. After connecting your wallet, simply enter the $PICOIN token contract address and confirm the transaction.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-text">
+                            <h4>4. Switch BNB for $PICOIN</h4>
+                            <p>Once you're in PancakeSwap, confirm the exchange to get your $PICOIN tokens in return for your BNB.</p>
+                        </div>
+                    </div>
+                </div>
+                <a href="https://www.binance.org" target="_blank" class="button">BUY NOW</a>
+            </div>
+
+            <!-- Contract Address Section -->
+            <div class="sub-section" id="contract-address">
+                <h3>Contract Address</h3>
+                <!-- Image insertion -->
+    <div class="image-container">
+        <button class="button" id="copyButton">0x1234567890abcdef1234567890abcdef12345678</button>
+         
+
+    <!-- Exchange Instruction -->
+    <div class="info">
+        
+        <h4>PiCoin is all about fair distribution and real rewards. No pre-mines, no special allocations—just a simple, transparent way to claim your stake.</h4>
+        <h3> 💰 How It Works</h3>
+
+        <h4> Send 0.01 BNB to the contract, and receive 0.01% of the total PiCoin supply</h4>
+        <h4> Send 1 BNB, and get 1% of the total supply</h4>
+        <h4> The more you contribute, the bigger your share—instantly credited, no waiting!</h4>
+       
+        <h3> 🔒 Fair & Transparent</h3>
+        <h4> No team allocation</h4>
+        <h4> No private sales</h4>
+        <h4> 100% community-driven</h4>
+
+   
+                
+                <script>
+                    document.getElementById("copyButton").addEventListener("click", function () {
+                        var copyText = "0x1234567890abcdef1234567890abcdef12345678"; // Text to copy
+                        var textArea = document.createElement("textarea");
+                        textArea.value = copyText;
+                        document.body.appendChild(textArea);
+                        textArea.select();
+                        document.execCommand("copy");
+                        document.body.removeChild(textArea);
+                        alert("Address copied: " + copyText); // Display success alert
+                    });
+                </script>
+            </div>
+        </div>
+        
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-icons">
+                <a href="https://x.com/Picoin_io" target="_blank">
+                    <i class="fab fa-twitter"></i> Twitter
+                </a>
+                
+                </a>
+            </div>
+            <div class="footer-text">
+                <h4>$PIcoin is a MEME coin, your ticket to the crypto fun side, not your retirement plan. Invest wisely—use disposable income only, and never bet your future on the thrill of the market. Keep it fun, but stay smart!</h4>
+                
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
