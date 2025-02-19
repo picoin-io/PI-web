@@ -1,0 +1,83 @@
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    
+    /* Adjust header for mobile */
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    /* Center navigation and stack links */
+    .nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .nav a {
+        font-size: 1.2em;
+        padding: 6px 12px;
+        display: block;
+    }
+
+    /* Adjust heading sizes */
+    h1 {
+        font-size: 2em;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    h3 {
+        font-size: 1.3em;
+    }
+
+    /* Adjust button sizes */
+    .button {
+        font-size: 1em;
+        padding: 10px 20px;
+    }
+
+    /* Ensure sections use a single column layout */
+    .steps {
+        flex-direction: column;
+    }
+
+    .step {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .step-text h4 {
+        font-size: 1.2em;
+    }
+
+    .step-text p {
+        font-size: 1em;
+    }
+
+    /* Ensure images scale correctly */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Adjust video to fit mobile screens */
+    .video-container {
+        max-width: 100%;
+        padding: 10px;
+    }
+
+    video {
+        width: 100%;
+    }
+
+    /* Footer adjustments for spacing */
+    footer {
+        font-size: 1em;
+        padding: 20px 10px;
+    }
+}
