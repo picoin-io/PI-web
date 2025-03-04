@@ -304,7 +304,7 @@ h1, h2, h3 {
         <h4>PiCoin is all about fair distribution and real rewards. No pre-mines, no special allocations—just a simple, transparent way to claim your stake.</h4>
     
 </div>
-         <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -354,6 +354,10 @@ h1, h2, h3 {
             max-width: 1000px;
             height: 100%;
         }
+
+        .chart-wrapper h2, .chart-wrapper .chart-container {
+            color: #111111;
+        }
     </style>
 </head>
 <body>
@@ -394,19 +398,19 @@ h1, h2, h3 {
                         type: 'line',
                         label: 'Price Growth (%)',
                         data: priceValues,
-                        borderColor: 'blue',
-                        backgroundColor: 'rgba(0, 0, 255, 0.1)',
+                        borderColor: '#003366',
+                        backgroundColor: 'rgba(0, 51, 102, 0.1)',
                         fill: false,
                         yAxisID: 'y1',
                         pointStyle: 'circle',
                         pointRadius: 5,
-                        pointBackgroundColor: 'blue'
+                        pointBackgroundColor: '#003366'
                     },
                     {
                         type: 'bar',
                         label: 'Circulating Supply',
                         data: supplyValues,
-                        backgroundColor: 'gray',
+                        backgroundColor: 'black',
                         yAxisID: 'y2'
                     }
                 ]
@@ -418,13 +422,14 @@ h1, h2, h3 {
                     y1: {
                         type: 'linear',
                         position: 'left',
-                        title: { display: true, text: 'Price Growth (%)' },
-                        ticks: { callback: function(value) { return value.toFixed(0) + '%'; } }
+                        title: { display: true, text: 'Price Growth (%)', color: '#111111' },
+                        ticks: { callback: function(value) { return value.toFixed(0) + '%'; }, color: '#111111' }
                     },
                     y2: {
                         type: 'linear',
                         position: 'right',
-                        title: { display: true, text: 'Circulating Supply' }
+                        title: { display: true, text: 'Circulating Supply', color: '#111111' },
+                        ticks: { color: '#111111' }
                     }
                 }
             }
@@ -432,6 +437,7 @@ h1, h2, h3 {
     </script>
 </body>
 </html>
+
        
         <h3>  How It Works</h3>
 
