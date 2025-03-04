@@ -302,9 +302,136 @@ h1, h2, h3 {
     <div class="info">
         
         <h4>PiCoin is all about fair distribution and real rewards. No pre-mines, no special allocations—just a simple, transparent way to claim your stake.</h4>
-       <div class="page page-four">
-    <img src="images/rocket.png" alt="Product Image" class="left-image">
+    
 </div>
+         <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1200">
+    <title>Picoin</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #FFCB00;
+            color: #111111;
+            font-family: Arial, sans-serif;
+        }
+
+        .chart-wrapper {
+            width: 100%;
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 20px;
+            border: 3px solid #111111;
+            border-radius: 15px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            background: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .chart-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 100%;
+            height: 500px;
+            padding: 20px;
+        }
+
+        canvas {
+            max-width: 1000px;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">PiCoin Price and Circulating Supply Trend</h1>
+
+    <div class="chart-wrapper">
+        <h2>PiCoin Price Growth & Circulating Supply</h2>
+        <div class="chart-container">
+            <canvas id="piChart"></canvas>
+        </div>
+    </div>
+
+    <script>
+        const supplyPercentages = [10];
+        const priceGrowthPercentages = [20];
+        let supply = 10;
+        let priceGrowth = 1.2;
+        let cumulativeGrowth = 1 + 0.2;
+
+        while (supply < 99) {
+            supply = supply + (100 - supply) * 0.1;
+            cumulativeGrowth = cumulativeGrowth * 1.2;
+            priceGrowthPercentages.push((cumulativeGrowth - 1) * 100);
+            supplyPercentages.push(supply);
+        }
+
+        const initialSupply = 314159265358979323;
+        let supplyValues = supplyPercentages.map(p => (p / 100) * initialSupply);
+        let priceValues = priceGrowthPercentages.map(p => p);
+
+        const ctx = document.getElementById('piChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: supplyPercentages.map(p => p.toFixed(2) + '%'),
+                datasets: [
+                    {
+                        type: 'line',
+                        label: 'Price Growth (%)',
+                        data: priceValues,
+                        borderColor: 'blue',
+                        backgroundColor: 'rgba(0, 0, 255, 0.1)',
+                        fill: false,
+                        yAxisID: 'y1',
+                        pointStyle: 'circle',
+                        pointRadius: 5,
+                        pointBackgroundColor: 'blue'
+                    },
+                    {
+                        type: 'bar',
+                        label: 'Circulating Supply',
+                        data: supplyValues,
+                        backgroundColor: 'gray',
+                        yAxisID: 'y2'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y1: {
+                        type: 'linear',
+                        position: 'left',
+                        title: { display: true, text: 'Price Growth (%)' },
+                        ticks: { callback: function(value) { return value.toFixed(0) + '%'; } }
+                    },
+                    y2: {
+                        type: 'linear',
+                        position: 'right',
+                        title: { display: true, text: 'Circulating Supply' }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
        
         <h3>  How It Works</h3>
 
