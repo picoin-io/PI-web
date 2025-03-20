@@ -1,38 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-        <meta name="viewport" content="width=1200">
-        <title>Picoin</title>
-        <link rel="stylesheet" href="css/style.css">
-       
-        <head>
-           
-            <link rel="icon" href="images/favicon.png" type="image/png">
-            <link rel="shortcut icon" href="images/favicon.png" type="image/png">
-            
-
-            <script type="application/ld+json">
-            {
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              "name": "PiCoin",
-              "url": "https://picoin.io",
-              "logo": "https://picoin.io/images/favicon.png"
-            }
-            </script>
-        
-        
-    
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Picoin</title>
+    <link rel="icon" href="images/favicon.png" type="image/png">
+    <link rel="shortcut icon" href="images/favicon.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "PiCoin",
+      "url": "https://picoin.io",
+      "logo": "https://picoin.io/images/favicon.png"
+    }
+    </script>
     <style>
-        body {
+        * {
             margin: 0;
             padding: 0;
-            background-color: #FFCB00;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #FFCB00 0%, #FFB800 100%);
             color: #111111;
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', Arial, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
         }
 
         .container {
@@ -40,86 +37,154 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 30px 20px;
-        }
-
-        h1, h2, h3 {
-            margin: 0 0 20px;
-            font-weight: bold;
+            text-align: center;
         }
 
         /* Header */
         header {
             background-color: #FFCB00;
-            padding: 20px 0;
-            text-align: left;
+            padding: 20px;
             display: flex;
             align-items: center;
-            border-bottom: 2px solid #111111;
+            justify-content: space-between;
+            border-bottom: 3px solid #111111;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         header img {
-            height: 40px;
-            margin-right: 20px;
+            height: 50px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
         }
 
-        header h1 {
-            font-size: 3em;
+        header img:hover {
+            transform: scale(1.1);
         }
 
-        /* Navigation */
         .nav {
-            margin-top: 10px;
-            text-align: center;
+            display: flex;
+            gap: 20px;
         }
 
         .nav a {
-            margin: 0 15px;
             font-size: 1.5em;
             color: #111111;
             text-decoration: none;
-            padding: 8px 18px;
-            border-radius: 5px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
         }
 
         .nav a:hover {
             background-color: #FFB800;
             color: white;
+            transform: translateY(-2px);
         }
 
-        /* Main content section */
-        #content {
-            padding: 30px 20px;
-            background-color: #e6b800;
-            border-radius: 15px;
-            margin-top: 20px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .sub-section {
-            background-color: #d69e00;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 30px;
-        }
-
-        .sub-section h3 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-        }
-
-        .sub-section p {
-            font-size: 1.2em;
-            line-height: 1.6;
-        }
-
-        .button {
+        .dapp-button {
             padding: 12px 24px;
             background-color: #111111;
             color: #FFCB00;
             border-radius: 30px;
             font-size: 1.2em;
-            transition: transform 0.3s ease, background-color 0.3s ease;
-            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .dapp-button:hover {
+            transform: scale(1.1);
+            background-color: #ff8a00;
+            color: white;
+        }
+
+        /* Hamburger Menu for Mobile */
+        .nav {
+            display: flex;
+        }
+
+        @media screen and (max-width: 768px) {
+            .nav {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #FFCB00;
+                padding: 20px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                animation: slideIn 0.3s ease;
+            }
+
+            .nav.active {
+                display: flex;
+            }
+
+            @keyframes slideIn {
+                from { transform: translateY(-20px); opacity: 0; }
+                to { transform: translateY(0); opacity: 1; }
+            }
+        }
+
+        /* Content */
+        #content {
+            padding: 40px 20px;
+            background-color: #e6b800;
+            border-radius: 15px;
+            margin-top: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .sub-section {
+            background-color: #d69e00;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .sub-section h3 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .sub-section p {
+            font-size: 1.2em;
+        }
+
+        .sub-section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .image-container {
+            padding: 10px;
+            max-width: 100%;
+        }
+
+        .button {
+            padding: 14px 28px;
+            background-color: #111111;
+            color: #FFCB00;
+            border-radius: 30px;
+            font-size: 1.2em;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            max-width: 100%;
+            word-break: break-all; /* Fix overflow on mobile */
         }
 
         .button:hover {
@@ -138,46 +203,29 @@
         .step {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 20px;
             background-color: #d69e00;
-            padding: 15px;
-            border-radius: 10px;
+            padding: 20px;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
         }
 
-        .step-text {
-            flex: 1;
+        .step:hover {
+            transform: translateY(-5px);
         }
 
         .step-text h4 {
-            font-size: 1.5em;
+            font-size: 1.6em;
             margin-bottom: 10px;
+            font-weight: 600;
         }
 
         .step-text p {
             font-size: 1.2em;
         }
 
-        footer {
-            background-color: #d69e00;
-            color: #111111;
-            padding: 30px 20px;
-            text-align: center;
-            margin-top: 40px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        footer a {
-            color: #111111;
-            margin: 0 10px;
-        }
-
-        footer a:hover {
-            color: #FFB800;
-        }
-
+        /* Video */
         .video-container {
-            width: 100%;
             max-width: 1200px;
             margin: 20px auto;
             text-align: center;
@@ -185,81 +233,261 @@
 
         video {
             width: 100%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
-        .progress-container {
+        /* Chart Section */
+        .chart-wrapper {
             width: 100%;
-            background-color: #ddd;
-            border-radius: 20px;
-            margin: 20px 0;
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 20px;
+            border: 3px solid #111111;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            background: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
-        .progress-bar {
-            height: 30px;
-            width: 0%;
-            background-color: #FFCB00;
-            border-radius: 20px;
+        .chart-logo {
+            width: 100px;
+            height: auto;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
         }
-    /* Center container and align content */
-.container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 30px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
 
-/* Center buttons using flexbox */
-.button {
-    padding: 12px 24px;
-    background-color: #111111;
-    color: #FFCB00;
-    border-radius: 30px;
-    font-size: 1.2em;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-    cursor: pointer;
-    display: block;
-    margin: 0 auto;
-}
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
 
-/* Center headings */
-h1, h2, h3 {
-    text-align: center;
-    margin-bottom: 20px;
-    font-weight: bold;
-}
+        .chart-container {
+            width: 100%;
+            height: 500px;
+            padding: 20px;
+        }
 
-/* Ensure sections and content are centered */
-.sub-section, .steps, .about-container {
-    text-align: center;
-}
+        canvas {
+            max-width: 100%;
+            height: 100%;
+        }
 
+        .chart-wrapper h2 {
+            color: #111111;
+            font-size: 2em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
 
+        .chart-info {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .chart-info h3 {
+            font-size: 1.8em;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .chart-info h4 {
+            font-size: 1.2em;
+            margin: 5px 0;
+            font-weight: 400;
+        }
+
+        .chart-info h2 {
+            font-size: 1.5em;
+            font-weight: 700;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        /* Mobile Chart Replacement with Animated Logo */
+        .mobile-logo {
+            display: none;
+            width: 100px;
+            height: auto;
+            margin: 20px auto;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @media screen and (max-width: 768px) {
+            .chart-container, .chart-wrapper h2, .chart-logo {
+                display: none; /* Hide chart, title, and desktop logo on mobile */
+            }
+            .mobile-logo {
+                display: block; /* Show only the mobile logo */
+            }
+        }
+
+        /* Token Logo Carousel */
+        .token-carousel {
+            width: 100%;
+            overflow: hidden;
+            background-color: #d69e00;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+
+        .token-carousel-track {
+            display: flex;
+            animation: scroll 20s linear infinite;
+        }
+
+        .token-carousel img {
+            width: 60px;
+            height: 60px;
+            margin: 0 20px;
+            object-fit: contain;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        @media screen and (max-width: 768px) {
+            .token-carousel img {
+                width: 40px;
+                height: 40px;
+                margin: 0 10px;
+            }
+        }
+
+        /* Footer */
+        footer {
+            background-color: #d69e00;
+            color: #111111;
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .footer-icons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            padding: 20px 0;
+        }
+
+        .footer-icons a {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .footer-icons img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+
+        .footer-icons a:hover {
+            transform: scale(1.2);
+            background-color: rgba(255, 203, 0, 0.2);
+            border-radius: 50%;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            header {
+                padding: 15px;
+            }
+
+            header img {
+                height: 40px;
+            }
+
+            .dapp-button {
+                padding: 10px 20px;
+                font-size: 1em;
+            }
+
+            .sub-section h3 {
+                font-size: 1.8em;
+            }
+
+            .sub-section p {
+                font-size: 1em;
+            }
+
+            .button {
+                padding: 12px 24px;
+                font-size: 1em;
+            }
+
+            .step {
+                flex-direction: column;
+                text-align: left;
+            }
+
+            .step-text h4 {
+                font-size: 1.4em;
+            }
+
+            .step-text p {
+                font-size: 1em;
+            }
+
+            .video-container {
+                padding: 10px;
+            }
+
+            .chart-info h3 {
+                font-size: 1.5em;
+            }
+
+            .chart-info h4 {
+                font-size: 1em;
+            }
+
+            .chart-info h2 {
+                font-size: 1.2em;
+            }
+
+            footer {
+                padding: 20px 10px;
+            }
+
+            .footer-icons {
+                gap: 15px;
+            }
+
+            .footer-icons a {
+                width: 40px;
+                height: 40px;
+            }
+
+            .footer-icons img {
+                width: 30px;
+                height: 30px;
+            }
+        }
     </style>
 </head>
-
 <body>
-
     <div class="container">
-        <!-- Header with logo and title -->
         <header>
-            <img src="images/logo.png" alt="PICOIN Logo">
+            <img src="images/logo.png" alt="PICOIN Logo" id="logo">
             <div class="nav">
                 <a href="#home">Home</a>
                 <a href="#about">About</a>
                 <a href="#how-to-buy">How to Buy</a>
-                <a href="#Contract Address">Contract Address</a>
-                <a href="#social-footer">Community</a>
+                <a href="#contract-address">Contract Address</a>
+                <a href="#Community">Community</a>
             </div>
+            <a href="https://your-dapp-url.com" target="_blank" class="dapp-button">DApp</a>
         </header>
 
-        <!-- Video Container -->
         <div class="video-container">
             <video autoplay loop muted>
                 <source src="videos/pi.mp4" type="video/mp4">
@@ -267,14 +495,12 @@ h1, h2, h3 {
             </video>
         </div>
 
-        <!-- Content Section -->
         <div id="content">
             <div class="sub-section" id="about">
                 <h3>$PIcoin - The Next Meme Coin</h3>
                 <p>While others are still trying to keep up, $PIcoin is taking off like the next viral sensation. This isn’t just another meme coin—it’s a full-blown movement. From crypto veterans to the new wave of meme warriors, $PIcoin is spreading like wildfire.</p>
-                <p>By the time the internet asks, “Why is $PIcoin everywhere?” you’ll already be ahead of the game. So, buckle up—traditional finance can keep crunching numbers, we’re launching straight to the moon. </p>
+                <p>By the time the internet asks, “Why is $PIcoin everywhere?” you’ll already be ahead of the game. So, buckle up—traditional finance can keep crunching numbers, we’re launching straight to the moon.</p>
                 <img src="images/archimedes.png" alt="PIcoin Logo">
-
             </div>
 
             <div class="sub-section" id="how-to-buy">
@@ -309,88 +535,118 @@ h1, h2, h3 {
                 <a href="https://pancakeswap.finance/?outputCurrency=0xf0531343BEEf35366a4F08DCda8383d2f980EDCb" target="_blank" class="button">BUY NOW</a>
             </div>
 
-            <!-- Contract Address Section -->
             <div class="sub-section" id="contract-address">
                 <h3>Contract Address</h3>
-                <!-- Image insertion -->
-    <div class="image-container">
-        <button class="button" id="copyButton">0xf0531343beef35366a4f08dcda8383d2f980edcb</button>
-         
+                <div class="image-container">
+                    <button class="button" id="copyButton">0xf0531343beef35366a4f08dcda8383d2f980edcb</button>
+                </div>
+                <div id="Contract Address">
+                    <div class="info">
+                        <h4>PiCoin is all about fair distribution and real rewards. No pre-mines, no special allocations—just a simple, transparent way to claim your stake.</h4>
+                    </div>
+                </div>
 
-    <!-- Exchange Instruction -->
-     <div id="Contract Address">
-    <div class="info">
-        
-        <h4>PiCoin is all about fair distribution and real rewards. No pre-mines, no special allocations—just a simple, transparent way to claim your stake.</h4>
- 
-</div>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=1200">
-    <title>Picoin</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #FFCB00;
-            color: #111111;
-            font-family: Arial, sans-serif;
-        }
-
-        .chart-wrapper {
-            width: 100%;
-            max-width: 1100px;
-            margin: 40px auto;
-            padding: 20px;
-            border: 3px solid #111111;
-            border-radius: 15px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            background: none;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .chart-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            width: 100%;
-            height: 500px;
-            padding: 20px;
-        }
-
-        canvas {
-            max-width: 1000px;
-            height: 100%;
-        }
-
-        .chart-wrapper h2, .chart-wrapper .chart-container {
-            color: #111111;
-        }
-    </style>
-</head>
-<body>
-    <h1 style="text-align: center;">PiCoin Price and Circulating Supply Trend</h1>
-
-    <div class="chart-wrapper">
-        <h2>PiCoin Price Growth & Circulating Supply</h2>
-        <div class="chart-container">
-            <canvas id="piChart"></canvas>
+                <!-- Chart Section with Animated Logo -->
+                <div class="chart-wrapper">
+                    <img src="images/logo.png" alt="PiCoin Logo" class="chart-logo">
+                    <h2>PiCoin Price Growth & Circulating Supply</h2>
+                    <div class="chart-container">
+                        <canvas id="piChart"></canvas>
+                    </div>
+                    <img src="images/logo.png" alt="PiCoin Logo" class="mobile-logo">
+                    <div class="chart-info">
+                        <h3>Earn PiCoin Proportionally by Sending BNB to the PiCoin Smart Contract</h3>
+                        <h4>By sending BNB to the PiCoin smart contract, you will receive a proportional amount of PiCoin tokens from the contract's available supply.</h4>
+                        <h4>Send 0.01 BNB to receive 0.01% of the PiCoin tokens in the contract.</h4>
+                        <h4>Send 1 BNB to receive 1% of the PiCoin tokens in the contract.</h4>
+                        <h4>The more you contribute, the more PiCoin you receive. All transactions are processed automatically in real-time—no waiting required!</h4>
+                        <h2>Join Now and Claim Your PiCoin Share Instantly!</h2>
+                    </div>
+                </div>
+            </div>
         </div>
+
+        <!-- Token Logo Carousel -->
+        <div class="token-carousel">
+            <div class="token-carousel-track">
+                <img src="images/btc.png" alt="BTC Logo">
+                <img src="images/eth.png" alt="ETH Logo">
+                <img src="images/bnb.png" alt="BNB Logo">
+                <img src="images/btc.png" alt="BTC Logo">
+                <img src="images/sol.png" alt="SOL Logo">
+                <img src="images/dash.png" alt="dash Logo">
+                <img src="images/eth.png" alt="ETH Logo">
+                <img src="images/cake.png" alt="cake Logo">
+                <img src="images/usdt.png" alt="usdt Logo">
+                <img src="images/bnb.png" alt="BNB Logo">
+                <!-- Duplicate for seamless loop -->
+                <img src="images/btc.png" alt="BTC Logo">
+                <img src="images/eth.png" alt="ETH Logo">
+                <img src="images/bnb.png" alt="BNB Logo">
+                <img src="images/btc.png" alt="BTC Logo">
+                <img src="images/sol.png" alt="SOL Logo">
+                <img src="images/dash.png" alt="dash Logo">
+                <img src="images/eth.png" alt="ETH Logo">
+                <img src="images/pancake.png" alt="cake Logo">
+                <img src="images/usdt.png" alt="usdt Logo">
+                <img src="images/bnb.png" alt="BNB Logo">
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-icons">
+                <a href="https://x.com/Picoin_io" target="_blank" rel="noopener noreferrer">
+                    <img src="images/x.png" alt="Twitter">
+                </a>
+                <a href="https://t.me/picoin_global" target="_blank" rel="noopener noreferrer">
+                    <img src="images/Telegram.png" alt="Telegram">
+                </a>
+                <a href="https://discord.gg/j7xdrMkV3V" target="_blank" rel="noopener noreferrer">
+                    <img src="images/discord.png" alt="Discord">
+                </a>
+                <a href="https://coinmarketcap.com/dexscan/en/bsc/0xe9c7347605cfce6a302cd8c76b4665f1f3f8d1c1/" target="_blank" rel="noopener noreferrer">
+                    <img src="images/coinmarketcap.png" alt="CoinMarketCap">
+                </a>
+                <a href="https://www.geckoterminal.com/bsc/pools/0xe9c7347605cfce6a302cd8c76b4665f1f3f8d1c1?utm_source=coingecko&utm_medium=referral&utm_campaign=searchresults" target="_blank" rel="noopener noreferrer">
+                    <img src="images/coingecko.png" alt="coingecko">
+                </a>
+                <a href="https://github.com/picoin-io/picoin/blob/main/PiCoin.sol" target="_blank" rel="noopener noreferrer">
+                    <img src="images/github.png" alt="GitHub">
+                </a>
+                <a href="https://picoin-io.github.io/PI-web/PiCoin%20Whitepaper.pdf" target="_blank" rel="noopener noreferrer">
+                    <img src="images/Whitepaper.png" alt="Whitepaper">
+                </a>
+                <a href="https://bscscan.com/token/0xf0531343beef35366a4f08dcda8383d2f980edcb" target="_blank" rel="noopener noreferrer">
+                    <img src="images/bscscan.png" alt="BscScan">
+                </a>
+            </div>
+            <p class="footer-text">
+                $PIcoin is a MEME coin, your ticket to the crypto fun side, not your retirement plan. 
+                Invest wisely—use disposable income only, and never bet your future on the thrill of the market. 
+                Keep it fun, but stay smart!
+            </p>
+        </footer>
     </div>
 
     <script>
+        // Navigation Toggle on Mobile (Click Logo)
+        document.getElementById('logo').addEventListener('click', () => {
+            document.querySelector('.nav').classList.toggle('active');
+        });
+
+        // Copy Contract Address
+        document.getElementById("copyButton").addEventListener("click", function () {
+            var copyText = "0xf0531343beef35366a4f08dcda8383d2f980edcb";
+            var textArea = document.createElement("textarea");
+            textArea.value = copyText;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand("copy");
+            document.body.removeChild(textArea);
+            alert("Address copied: " + copyText);
+        });
+
+        // Chart.js Setup (Desktop Only)
         const supplyPercentages = [10];
         const priceGrowthPercentages = [20];
         let supply = 10;
@@ -457,82 +713,3 @@ h1, h2, h3 {
     </script>
 </body>
 </html>
-       
-        <h3>Earn PiCoin Proportionally by Sending BNB to the PiCoin Smart Contract</h3>
-        <h4>By sending BNB to the PiCoin smart contract, you will receive a proportional amount of PiCoin tokens from the contract's available supply.</h4>
-        <h4> Send ≥ 0.01 BNB and ≤ 1 BNB to the contract.</h4>
-        <h4>Send 0.01 BNB to receive 0.01% of the PiCoin tokens in the contract.</h4>
-        <h4>Send 1 BNB to receive 1% of the PiCoin tokens in the contract.</h4>
-        <h4>The more you contribute, the more PiCoin you receive. All transactions are processed automatically in real-time—no waiting required!</h4>
-        <h2> Join Now and Claim Your PiCoin Share Instantly! </h2>
-       
-       
-   
-                
-                <script>
-                    document.getElementById("copyButton").addEventListener("click", function () {
-                        var copyText = "0xf0531343beef35366a4f08dcda8383d2f980edcb"; // Text to copy
-                        var textArea = document.createElement("textarea");
-                        textArea.value = copyText;
-                        document.body.appendChild(textArea);
-                        textArea.select();
-                        document.execCommand("copy");
-                        document.body.removeChild(textArea);
-                        alert("Address copied: " + copyText); // Display success alert
-                    });
-                </script>
-            </div>
-        </div>
-        
-
-        <!-- Footer -->
-<footer>
-    <div id="social-footer">
-        <div class="footer-icons">
-           <a href="https://x.com/Picoin_io" target="_blank" rel="noopener noreferrer">
-            <img src="images/x.png" alt="Twitter">
-        </a>
-            <a href="https://discord.gg/j7xdrMkV3V" target="_blank" rel="noopener noreferrer">
-            <img src="images/discord.png" alt="Discord">
-        </a>
-        <a href="https://t.me/picoin_global" target="_blank" rel="noopener noreferrer">
-            <img src="images/Telegram.png" alt="Telegram">
-        </a>
-        <a href="https://coinmarketcap.com/dexscan/en/bsc/0xe9c7347605cfce6a302cd8c76b4665f1f3f8d1c1/" target="_blank" rel="noopener noreferrer">
-            <img src="images/coinmarketcap.png" alt="CoinMarketCap">
-        </a>
-             <a href="https://www.geckoterminal.com/bsc/pools/0xe9c7347605cfce6a302cd8c76b4665f1f3f8d1c1?utm_source=coingecko&utm_medium=referral&utm_campaign=searchresults" target="_blank" rel="noopener noreferrer">
-            <img src="images/coingecko.png" alt="coingecko">
-        </a>
-            
-        <a href="https://github.com/picoin-io/picoin/blob/main/PiCoin.sol" target="_blank" rel="noopener noreferrer">
-            <img src="images/github.png" alt="GitHub">
-        </a>
-            <a href="https://picoin-io.github.io/PI-web/PiCoin%20Whitepaper.pdf" target="_blank" rel="noopener noreferrer">
-    <img src="images/Whitepaper.png" alt="Whitepaper">
-</a>
-        <a href="https://bscscan.com/token/0xf0531343beef35366a4f08dcda8383d2f980edcb" target="_blank" rel="noopener noreferrer">
-            <img src="images/bscscan.png" alt="BscScan">
-            </a>
-        </div>
-    </div>
-
-    <div class="footer-text">
-        <h4>
-            $PIcoin is a MEME coin, your ticket to the crypto fun side, not your retirement plan. 
-            Invest wisely—use disposable income only, and never bet your future on the thrill of the market. 
-            Keep it fun, but stay smart!
-        </h4>
-    </div>
-</footer>
-
-<!-- Closing Main Wrapper -->
-</div>
-
-<!-- JavaScript Files (if needed) -->
-<script src="scripts/main.js"></script> <!-- Example script file, if any -->
-
-<!-- Closing Body and HTML -->
-</body>
-</html>
-
